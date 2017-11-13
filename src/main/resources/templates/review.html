@@ -27,7 +27,9 @@
 			<p th:text="${review.tag}"></p>
 			<a href="http://localhost:8080/categories">List of Fruit
 				Categories</a> <a href="http://localhost:8080/reviews">List of Fruit
-				Reviews</a>
+				Reviews</a> <a class="reviews"
+				th:href="@{/category(id=${review.category.categoryId})}">Back to
+				Category</a>
 
 		</div>
 		<div class="reviews">
