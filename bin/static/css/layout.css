@@ -1,0 +1,46 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+#category {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	justify-content: space-around;
+}
+
+#page-title {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	/* height:20rem; */
+}
+
+.container {
+	display: grid;
+	grid-template-rows: 2fr 7 fr 1fr;
+	min-height: 125vh;
+	margin: 1rem auto;
+	padding: 25px;
+	grid-gap: 50px;
+}
+
+.main {
+	align-items: flex-start;
+	display: flex;
+	flex-direction: column;
+}
+
+.reviews {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+}
+
+footer {
+	display: flex;
+	justify-content: flex-end;
+	padding-right: 45%;
+}
