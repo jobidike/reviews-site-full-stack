@@ -34,15 +34,20 @@
 		</div>
 		<div class="reviews">
 			<form method="POST">
-				<label>Enter a new tag name: </label> <input type="text"
-					name="tagName" />
+				<label>Enter a new tag name: </label>
+				 <input name="id" type="hidden" th:value="${review.id}"/>
+				 <input type="text" name="tagName" />
 				<button th:formaction="@{/add-tag}">add</button>
 			</form>
 
 			<form method="POST">
-				<label>Enter id of course to remove: </label> <input type="text"
-					name="id" />
-				<button th:formaction="@{/remove-tag}">delete</button>
+				<label>Enter tag name to remove: </label>
+				<input name="reviewId" type="hidden" th:value="${review.id}"/>
+					<section th:each="tag: ${review.tag}">
+						<a th:href="@{/tag(id=${tag.id})}" th:text="${tag.tagName}"></a>
+				<button name="id" th:value="${tag.id}" th:formaction="@{/remove-tag}">delete</button></section>
+				<!-- <input type="text" name="tagName" />
+				<button th:formaction="@{/remove-tag}">delete</button> -->
 			</form>
 
 		</div>

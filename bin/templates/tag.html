@@ -23,9 +23,12 @@
 
 
 			<div th:each="currentTag: ${tag.reviewsOnTags}"
-				th:text="${currentTag.name}"></div>
+				th:text="${currentTag.name}">
 			<a th:href="@{/currentReview(id=${currentReview.id})}"
 				th:text="${currentReview.name}"></a>
+			<!-- <a th:href="@{/currentReview(id=${tag.id})}"
+				th:text="${tag.id}"></a> -->
+			</div>
 		</div>
 		<footer>
 			<h4>Copyright 2017 Jaimie Obidike</h4>

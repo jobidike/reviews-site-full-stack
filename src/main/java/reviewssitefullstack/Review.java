@@ -74,4 +74,25 @@ public class Review {
 		return tags;
 	}
 
+	public void addTagName(Tag tag) {
+		tags.add(tag);
+		
+	}
+
+	public void removeTag(Tag tag) {
+		tags.remove(tag);
+		
+	}
+	
+
+//	public void removeTagName(Tag removeTag) {
+//		tags.add(removeTag);
+//		
+//	}
+
+//	public void removeTagName(Tag tag ) {
+//		tags.delete();
+//		
+//	}
+
 } // close

@@ -15,6 +15,10 @@ public class Tag {
 	private Long id;
 
 	private String tagName;
+	
+//	public void addTag(Tag tag) {
+//		.add(tagName);
+//	}
 
 	@ManyToMany(mappedBy = "tags")
 	private Set<Review> reviewsOnTags;

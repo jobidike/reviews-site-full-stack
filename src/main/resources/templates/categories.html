@@ -4,31 +4,31 @@
 
 
 <head>
-<link rel="stylesheet" type="text/css" href="./css/styles.css"/>
-<link rel="stylesheet" type="text/css" href="./css/layout.css"/>
+<link rel="stylesheet" type="text/css" href="./css/styles.css" />
+<link rel="stylesheet" type="text/css" href="./css/layout.css" />
 <title>Fruit Categories</title>
 </head>
 
 <body class="img">
-<div class="container">
-	<header>
-		<div id="page-title">
-			<h1>List of Fruit Categories</h1>
+	<div class="container">
+		<header>
+			<div id="page-title">
+				<h1>List of Fruit Categories</h1>
+			</div>
+		</header>
+		<div class="reviews">
+			<section th:each="category: ${categories}">
+				<h2>
+					<a th:href="@{/category(id=${category.categoryId})}"
+						th:text="${category.categoryName}"></a>
+
+				</h2>
+			</section>
+			<a href="http://localhost:8080/reviews"> List of Reviews</a>
 		</div>
-	</header>
-	<div class="reviews">	
-	<section th:each="category: ${categories}">
-			<h2>
-				<a th:href="@{/category(id=${category.categoryId})}"
-					th:text="${category.categoryName}"></a>
-					
-			</h2>
-		</section>
-		<a href="http://localhost:8080/reviews"> List of Reviews</a>
+		<footer>
+			<h4>Copyright 2017 Jaimie Obidike</h4>
+		</footer>
 	</div>
-	<footer>
-		<h4>Copyright 2017 Jaimie Obidike</h4>
-	</footer>
-</div>
 </body>
 </html>

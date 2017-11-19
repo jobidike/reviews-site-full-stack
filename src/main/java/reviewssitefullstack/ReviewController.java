@@ -1,11 +1,14 @@
 package reviewssitefullstack;
 
+//import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
 
 @Controller
 public class ReviewController {
@@ -57,17 +60,44 @@ public class ReviewController {
 	}
 
 	@RequestMapping("/add-tag")
-	public String addTag(String tagName) {
+	public String addTag(@RequestParam(value = "id") Long id,String tagName) {
 		Tag newTag = new Tag(tagName);
 		tagRepo.save(newTag);
-		return "redirect:/tags";
+		Review review = reviewRepo.findOne(id);
+		review.addTagName(newTag);
+		reviewRepo.save(review);
+		return "redirect:/review?id=" + id;
+	}
+	
+	@RequestMapping("/remove-tag")
+	public String removeTag(@RequestParam Long id,@RequestParam Long reviewId) {
+		Tag deleteTag = tagRepo.findOne(id);
+		Review review = reviewRepo.findOne(reviewId);
+		review.removeTag(deleteTag);
+		reviewRepo.save(review);
+		return "redirect:/review?id=" + reviewId;
 	}
 
-	@RequestMapping("/remove-tag")
-	public String removeTag(Long id) {
-		Tag removeTag = tagRepo.findOne(id);
-		tagRepo.delete(removeTag);
-		return "redirect:/tag";
-	}
+	
+
+
+	
+//	@RequestMapping("/remove-tag")
+//	public String removeTag(Long id) {
+//		Tag removeTag = tagRepo.findOne(id);             //maybe use this
+//		tagRepo.delete(removeTag);
+//		Review review = reviewRepo.findOne(id);
+//		review.removeTagName(removeTag);
+//		reviewRepo.delete(review);
+//		return "redirect:/review?id=" + id;
+//	}
+	
+
+//	@RequestMapping("/remove-tag")
+//	public String removeTag(Long id) {
+//		Tag removeTag = tagRepo.findOne(id); //original one
+//		tagRepo.delete(removeTag);
+//		return "redirect:/tag";
+//	}
 
 } // close
